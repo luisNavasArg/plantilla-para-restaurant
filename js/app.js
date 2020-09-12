@@ -86,15 +86,13 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
 			  		<option value="3">3</option>
 			  		<option value="4">4</option>
 				</select>
-    			<a href="#" id="agrega" class="btn btn-primary">Agregar</a>
-  			
 		</div>				
 	`;
 	});	
@@ -105,15 +103,14 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
 			  		<option value="3">3</option>
 			  		<option value="4">4</option>
 				</select>
-    			<a href="#" id="agrega" class="btn btn-primary">Agregar</a>
-  			
+    
 		</div>
 		`;	
 	});
@@ -123,15 +120,13 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
 			  		<option value="3">3</option>
 			  		<option value="4">4</option>
 				</select>
-    			<a href="#" id="agrega" class="btn btn-primary">Agregar</a>
-  			
 		</div>
 		`;	
 	});
@@ -148,7 +143,6 @@ const inicio = ()=>{
 			  		<option value="3">3</option>
 			  		<option value="4">4</option>
 				</select>
-  			
 		</div>
 		`;	
 	});
