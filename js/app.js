@@ -164,9 +164,11 @@ console.log(event.target.value);
 // console.log(elemento+" la cantidad: "+ cantidad.options[cantidad.selectedIndex].value);
 console.log(nombre, precio);
 pedido=[...pedido,{"categoria":item, "plato":nombre,"precio":precio,"cantidad":event.target.value}];
-console.log(pedido);
 
+};
 
+const mostrarPedido=()=>{
+	console.log(pedido);	
 };
 
 
