@@ -17,7 +17,7 @@ let platos ={
 	"url":"imagenes/empanadas.png"
 	}],
 "principales":[{
-	"nombre":"Berenjena a la Provenzal",
+	"nombre":"Berenjena Provenzal",
 	"precio":"200",
 	"url":"imagenes/berenjenaProvenzal.png"
 	},
@@ -32,7 +32,7 @@ let platos ={
 	"url":"imagenes/milanesaNapolitana.png"
 	},
 	{
-	"nombre":"Berenjena a la Parmesana",
+	"nombre":"Berenjena Parmesana",
 	"precio":"200",
 	"url":"imagenes/berenjenaParmesana.png"
 	}],
@@ -141,17 +141,38 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')" name="seleccion">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
 			  		<option value="3">3</option>
 			  		<option value="4">4</option>
 				</select>
-    			<a href="#" id="agrega" class="btn btn-primary">Agregar</a>
   			
 		</div>
 		`;	
 	});
 };
 inicio();
+
+
+const IVA = 0.21;
+
+const calcularPrecio = (precio)=>{
+	return precio + (precio * IVA);
+};
+let pedido = [];
+const agregar=(event, nombre, precio,item)=>{
+console.log(event.target.value);
+
+// let cantidad = document.querySelector(".custom-select");
+// let elemento = document.querySelector("#agrega");
+// console.log(elemento+" la cantidad: "+ cantidad.options[cantidad.selectedIndex].value);
+console.log(nombre, precio);
+pedido=[...pedido,{"categoria":item, "plato":nombre,"precio":precio,"cantidad":event.target.value}];
+console.log(pedido);
+
+
+};
+
+

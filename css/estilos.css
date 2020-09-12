@@ -6,17 +6,23 @@ header{
 	background-image: url('../imagenes/head.png');	
 	height: 300px;
 	background-repeat: no-repeat;
-	background-size: 90%;
+	background-size: 100%;
 }
 h1{
 	font-family: unset;
 }
 h2{
+	font-family: fantasy;
 	text-align: center;
 }
 #uno, #dos, #tres, #cuatro{
 
 }
 .col-6{
-	background-color:rgba(226,79,236,0.3);
+	
+}
+.separar{
+	background-color:rgba(226,79,236,0.1);
+	margin-bottom: 10%;
+	padding-bottom: 20px; 
 }
