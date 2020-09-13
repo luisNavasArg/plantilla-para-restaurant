@@ -8,7 +8,7 @@
 	<title></title>
 </head>
 <body>
-	<div class="container">
+	<div class="container principal">
 		<header></header>
 		<div class="row">
 			<h1 class="col-12 text-center">Menú</h1>
@@ -33,7 +33,40 @@
 		<div class="pagar">
 			<button class="btn-primary" onclick="mostrarPedido()">Cerrar el pedido</button>
 		</div>	
-	</div>	
+	</div>
+	
+	<div class="container-fluid">
+		<div class="resultado">
+			<div class="row">
+				<div class="col-12" >
+					<table>
+						<thead>
+							<tr>
+								<h3 class="text-center">Su Pedido</h3>
+								<th class="text-center">Categoria</th>
+								<th class="text-center">Descripción</th>
+								<th class="text-center">Precio unitario</th>
+								<th class="text-center">Cantidad</th>
+								<th class="text-center">Sub Total</th>
+							</tr>
+						</thead>
+						<tbody id="resultado">
+							
+						</tbody>
+					</table>
+				</div>
+				<div class="col-4">
+					<button class="btn-primary">
+						Pagar
+					</button>
+					<button class="btn-secondary" 
+					onclick="location.reload()">
+						Cancelar Pedido
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>		
 	<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

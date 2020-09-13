@@ -86,7 +86,7 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'Entradas')">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
@@ -103,7 +103,7 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'Principales')">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
@@ -120,7 +120,7 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'Postres')">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
@@ -136,7 +136,7 @@ const inicio = ()=>{
   			<img src=${plato.url} class="card-img-top" alt="">
     			<h5 class="card-title">${plato.nombre}</h5>
     			<p class="card-text">$ ${plato.precio}</p>
-    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'bebidas')" name="seleccion">
+    			<select class="custom-select" onchange="agregar(event, '${plato.nombre}',${plato.precio},'Bebidas')" name="seleccion">
 			  		<option selected>Cantidad</option>
 			  		<option value="1">1</option>
 			  		<option value="2">2</option>
@@ -155,6 +155,9 @@ const IVA = 0.21;
 const calcularPrecio = (precio)=>{
 	return precio + (precio * IVA);
 };
+const cacularIva =(precio)=>{
+	return precio * IVA;
+};
 let pedido = [];
 const agregar=(event, nombre, precio,item)=>{
 console.log(event.target.value);
@@ -163,12 +166,34 @@ console.log(event.target.value);
 // let elemento = document.querySelector("#agrega");
 // console.log(elemento+" la cantidad: "+ cantidad.options[cantidad.selectedIndex].value);
 console.log(nombre, precio);
-pedido=[...pedido,{"categoria":item, "plato":nombre,"precio":precio,"cantidad":event.target.value}];
+pedido=[...pedido,{"categoria":item, "plato":nombre,
+"precio":precio,"cantidad":event.target.value}];
 
 };
 
 const mostrarPedido=()=>{
-	console.log(pedido);	
+	let desglose="";
+	let sinIva=0;
+	pedido.forEach((item)=>{
+		let monto =parseInt(item.precio)*item.cantidad;
+		desglose+=`
+			<tr>
+				<td class="text-center">${item.categoria}</td> 
+				<td class="text-center">${item.plato}</td>
+				<td class="text-right">$ ${item.precio}</td> 
+				<td class="text-center">${item.cantidad}</td>
+				<td class="text-right">$ ${monto}</td>
+			</tr>
+		`;
+		sinIva=sinIva+monto;
+	});
+	document.querySelector(".principal").style.display = "none";
+	let muestra = document.querySelector(".resultado");
+	let resultado = document.querySelector("#resultado");
+	muestra.style.display = "inline-block"; 
+	resultado.innerHTML=`
+		${desglose}
+		<tr><th>Sub Total</th> <td class="text-right">$ ${sinIva}</td><td></td><th>IVA</th><td class="text-right">$ ${cacularIva(sinIva)}</td></tr>
+		<tr><th></th> <td class="text-right"></td><td></td><th>Total</th><td class="text-right">$ ${calcularPrecio(sinIva)}</td></tr>
+	`;	
 };
-
-
